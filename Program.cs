@@ -6,6 +6,7 @@ public class Program
     public abstract class Component
     {
         public abstract void Print();
+        public abstract Component Clone();
     }
 
     public class Decorator : Component
@@ -14,6 +15,11 @@ public class Program
         public override void Print()
         {
             _component.Print();
+        }
+        public override Component Clone()
+        {
+            Component clone = new Decorator(this._component);
+            return clone;
         }
         public Decorator(Component component) 
         {
@@ -28,6 +34,11 @@ public class Program
             _info = info;
         }
 
+        public override Component Clone()
+        {
+            Component clone = new ConcreteDecoratorA(base.Clone(),this._info);
+            return clone;
+        }
         public Component GetDecoratedObject()
         { 
             return this; 
@@ -51,6 +62,10 @@ public class Program
             FirstIngriedient = partA;
             SecondIngriedient = partB;
             ThirdIngriedient = partC;
+        }
+        public override Component Clone()
+        {
+            throw new NotImplementedException();
         }
         public Dish() { }
         public override void Print()
