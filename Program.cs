@@ -148,7 +148,6 @@ public class Program
     public class Director
     {
         private Kitchen _kitchen;
-        private Random rnd = new Random();
         public Director(Kitchen kitchen)
         {
             _kitchen = kitchen;
